@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Management</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <h1>Spring Boot User Manager</h1>
@@ -25,43 +26,6 @@
     <button id="loadBtn">Load Users</button>
     <ul id="userList"></ul>
   </section>
-
-  <script>
-    const apiUrl = '/users'; // same origin on port 8086
-
-    // Handle form submission
-    document.getElementById('userForm').addEventListener('submit', async e => {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      const res = await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password })
-      });
-
-      if (res.ok) {
-        alert('User added!');
-        e.target.reset();
-      } else {
-        alert('Error adding user');
-      }
-    });
-
-    // Load users on button click
-    document.getElementById('loadBtn').addEventListener('click', async () => {
-      const res = await fetch(apiUrl);
-      const users = await res.json();
-      const list = document.getElementById('userList');
-      list.innerHTML = '';
-      users.forEach(u => {
-        const li = document.createElement('li');
-        li.textContent = `${u.id}: ${u.name} (${u.email})`;
-        list.append(li);
-      });
-    });
-  </script>
+<script src="js/script.js"></script>
 </body>
 </html>
