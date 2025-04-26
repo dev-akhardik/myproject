@@ -1,28 +1,28 @@
 package com.untitle.myproject.controller;
 
 import com.untitle.myproject.entity.User;
-import com.untitle.myproject.service.UserService;
+import com.untitle.myproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
 
   @Autowired
-  private UserService userService;
+  private UserRepository userRepository;
 
-  // Create user
+  // POST - Save user
   @PostMapping
   public User createUser(@RequestBody User user) {
-    return userService.saveUser(user);
+    return userRepository.save(user);
   }
 
-  // Get all users
+  // GET - List users
   @GetMapping
-  public List<User> getUsers() {
-    return userService.getAllUsers();
+  public List<User> getAllUsers() {
+    return userRepository.findAll();
   }
 }
