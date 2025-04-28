@@ -2,7 +2,6 @@ package com.example.myproject.service;
 
 import com.example.myproject.entity.User;
 import com.example.myproject.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
 
-  @Autowired
   public UserServiceImpl(UserRepository userRepository) {
     this.userRepository = userRepository;
   }
